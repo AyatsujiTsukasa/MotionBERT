@@ -38,13 +38,20 @@ checkpoint = torch.load(opts.evaluate, map_location=lambda storage, loc: storage
 model_backbone.load_state_dict(checkpoint['model_pos'], strict=True)
 model_pos = model_backbone
 model_pos.eval()
+# testloader_params = {
+#           'batch_size': 1,
+#           'shuffle': False,
+#           'num_workers': 8,
+#           'pin_memory': True,
+#           'prefetch_factor': 4,
+#           'persistent_workers': True,
+#           'drop_last': False
+# }
 testloader_params = {
           'batch_size': 1,
           'shuffle': False,
-          'num_workers': 8,
+          'num_workers': 0,
           'pin_memory': True,
-          'prefetch_factor': 4,
-          'persistent_workers': True,
           'drop_last': False
 }
 
